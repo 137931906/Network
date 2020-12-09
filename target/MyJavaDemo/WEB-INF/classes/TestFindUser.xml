@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <table name="com.cykj.bean.FindUser">
+        <property name="Id" column="Id" order="1"/>
+        <property name="userName" column="userName" order="2"/>
+        <property name="regTime" column="regTime" order="3"/>
+        <property name="score" column="score" order="4"/>
+        <property name="uploading" column="uploading" order="5"/>
+        <property name="download" column="download" order="6"/>
+        <property name="userState" column="userState" order="7"/>
+    </table>
+</root>

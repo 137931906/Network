@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.cykj.mapper.FindUserMapper">
+    <select id="findUser" resultType="findUser" parameterType="findUser">
+            select * from finduser
+    </select>
+    <select id="userCount" resultType="int">
+            select count(*) from finduser
+    </select>
+</mapper>

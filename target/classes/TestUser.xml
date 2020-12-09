@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<table name="com.cykj.bean.User">
+    <property name="userId" column="userId" order="1"/>
+    <property name="username" column="username" order="2"/>
+    <property name="account" column="account" order="3"/>
+    <property name="pwd" column="pwd" order="4"/>
+</table>
+</root>

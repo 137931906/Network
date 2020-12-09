@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.cykj.mapper.FindStudentMapper">
+
+    <select id="findStudent" resultType="classes" resultMap="find">
+            select * from class
+    </select>
+
+    <select id="findstudents" parameterType="java.lang.Integer" resultType="student">
+            select * from student where classid = #{classid}
+    </select>
+
+    <resultMap id="find" type="classes">
+        <id column="classid" property="classId"></id>
+        <result column="classname" property="classname"></result>
+        <collection column="classid" property="studentList" ofType="student" select="findstudents">
+            <id column="id" property="id"></id>
+            <result column="username" property="username"></result>
+            <result column="age" property="age"></result>
+            <result column="classId" property="classId"></result>
+        </collection>
+    </resultMap>
+
+<!--    <select id="" parameterType="java.lang.Integer" resultType="">-->
+<!--    select * from  where =#{};-->
+<!--    </select>-->
+
+<!--    <select id="" parameterType="java.lang.Integer" resultType="">-->
+<!--    select * from  where =#{};-->
+<!--    </select>-->
+<!--    <resultMap id="" type="">-->
+<!--        <id column="id" property="id"></id>-->
+<!--        <result column="" property="peopleName"></result>-->
+<!--        <result column="" property="pSex"></result>-->
+<!--        <result column="" property="pAccount"></result>-->
+<!--        <result column="" property="pPassword"></result>-->
+<!--        <association property="" column="" javaType="" select="">-->
+<!--            <id column="id" property="id"></id>-->
+<!--            <result column="" property=""></result>-->
+<!--            <result column="" property=""></result>-->
+<!--        </association>-->
+<!--    </resultMap>-->
+
+<!--    一对多-->
+<select id="findStudentByJoin" resultMap="OneToMany">
+    select t1.*,t2.* from class t2 left join student t1 on t1.classId = t2.classId;
+</select>
+    <resultMap id="OneToMany" type="classes">
+        <id column="classid" property="classId"></id>
+        <result column="classname" property="classname"></result>
+        <collection property="studentList" ofType="student">
+            <id column="id" property="id"></id>
+            <result column="userName" property="userName"></result>
+            <result column="age" property="age"></result>
+            <result column="classId" property="classId"></result>
+        </collection>
+    </resultMap>
+
+
+
+<!--    多对一-->
+    <select id="findStudentByJoin2" resultMap="ManyToOne">
+    select t1.*,t2.* from student t1 left join class t2 on t1.classId = t2.classId;
+</select>
+    <resultMap id="ManyToOne" type="student">
+        <id column="id" property="id"></id>
+        <result column="userName" property="userName"></result>
+        <result column="age" property="age"></result>
+        <result column="classId" property="classId"></result>
+
+        <association property="classes" javaType="classes">
+            <id column="classid" property="classId"></id>
+            <result column="classname" property="classname"></result>
+        </association>
+    </resultMap>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>后台注册</title>
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/login.css" />
+</head>
+<body>
+<div class="m-login-bg">
+    <div class="m-reg">
+        <h3></h3>
+        <div class="m-login-warp">
+            <form class="layui-form">
+                <div class="layui-form-item">
+                    <input type="text" name="name" required lay-verify="required" placeholder="用户名" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <input type="text" name="password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <input type="text" name="confirmPassword" required lay-verify="required" placeholder="确认密码" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-form-item">
+                        <select name="modules" lay-verify="required" lay-search="">
+                            <option value="0">性别</option>
+                            <option value="1">男</option>
+                            <option value="2">女</option>
+                            <option value="3">未知</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-form-item">
+                        <select name="modules" lay-verify="required" lay-search="">
+                            <option value="0">学历</option>
+                            <option value="1">博士</option>
+                            <option value="2">硕士</option>
+                            <option value="3">幼儿园</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-form-item">
+                        <select name="modules" lay-verify="required" lay-search="">
+                            <option value="0">职业</option>
+                            <option value="1">医生</option>
+                            <option value="2">警察</option>
+                            <option value="3">老师</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <input type="text" name="phone " required lay-verify="required" placeholder="手机号" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <input type="text" name="e-mail " required lay-verify="required" placeholder="邮箱" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-item m-login-btn">
+                    <div class="layui-inline">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="login">注册</button>
+                    </div>
+                    <div class="layui-inline">
+                        <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="../layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function() {
+        var form = layui.form(),
+            layer = layui.layer;
+
+
+        //自定义验证规则
+        form.verify({
+            title: function(value) {
+                if(value.length < 5) {
+                    return '标题至少得5个字符啊';
+                }
+            },
+            password: [/(.+){6,12}$/, '密码必须6到12位'],
+            verity: [/(.+){6}$/, '验证码必须是6位'],
+
+        });
+
+
+        //监听提交
+        form.on('submit(login)', function(data) {
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            return false;
+        });
+
+    });
+</script>
+</body>
+</html>
